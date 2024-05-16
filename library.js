@@ -1,7 +1,13 @@
 const myLibrary = [];
 
-function Book() {
-  // the constructor...
+function Book(title, author, numOfPages, read, notRead) {
+  this.title = title;
+  this.author = author;
+  this.numOfPages = numOfPages;
+}
+
+Book.prototype.ifRead = function() {
+
 }
 
 function addBookToLibrary() {
