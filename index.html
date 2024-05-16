@@ -8,9 +8,26 @@
 </head>
 <body>
   <div class="container">
+    <button class="add-book open-modal">NEW-BOOK</button>
+
     <div id="display-books">
 
     </div>
+
+    <dialog class="modal">
+      <button id="close-modal">X</button>
+      <label for="title">TITLE</label>
+      <input type="text" id="title" name="title">
+      <label for="author">AUTHOR</label>
+      <input type="text" id="author" name="author">
+      <label for="num-of-pages">NUMBER OF PAGES</label>
+      <input type="number" id="num-of-pages" name="num-of-pages">
+      <div class="check-read">
+        <input type="button" value="read">
+        <input type="button" value="did not read">
+      </div>
+      <input type="button" value="confirm" id="confirm">
+    </dialog>
   </div>
   <script src="library.js"></script>
 </body>

@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'roboto';
+  src: url(fonts/Roboto-Thin.ttf);
+}
+
+body {
+  font-family: 'roboto';
+}
+
+.modal > input {
+  display: block;
+  margin-bottom: 20px;
+}
+
+#close-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
