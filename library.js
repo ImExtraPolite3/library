@@ -1,17 +1,28 @@
 const myLibrary = [];
+let read = false;
 
-function Book(title, author, numOfPages, read, notRead) {
+function Book(title, author, numOfPages) {
   this.title = title;
   this.author = author;
   this.numOfPages = numOfPages;
 }
 
 Book.prototype.ifRead = function() {
+  const yesRead = document.getElementById('read');
+  const noRead = document.getElementById('not-read');
 
+  yesRead.addEventListener('click', () => {
+    read = true;
+    this.read = read;
+  });
+
+  noRead.addEventListener('click', () => {
+    read = false;
+    this.read = read
+  })
 }
 
 function addBookToLibrary() {
-  // do stuff here
 }
 
 function displayBooks() {
@@ -46,3 +57,4 @@ function closeModal() {
 openModal();
 closeModal();
 displayBooks();
+addBookToLibrary(); 
