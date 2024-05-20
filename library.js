@@ -23,6 +23,13 @@ Book.prototype.ifRead = function() {
 }
 
 function addBookToLibrary() {
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const numOfPages = document.getElementById('num-of-pages');
+
+  const newBook = new Book(title.value, author.value, numOfPages.value);
+
+  console.log(`TITLE: ${newBook.title}, AUTHOR: ${newBook.author}, NUM OF PAGES: ${newBook.numOfPages}`)
 }
 
 function displayBooks() {
@@ -57,4 +64,3 @@ function closeModal() {
 openModal();
 closeModal();
 displayBooks();
-addBookToLibrary(); 
