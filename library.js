@@ -14,6 +14,8 @@ function addBookToLibrary() {
   const numOfPages = document.getElementById('num-of-pages');
   const ifRead = document.querySelectorAll('.if-read');
   const confirm = document.getElementById('confirm');
+  const clearAllText = document.querySelectorAll('.close-modal');
+  let num = 0;
 
   ifRead.forEach(check => {
     check.addEventListener('click', () => {
@@ -27,20 +29,28 @@ function addBookToLibrary() {
 
   confirm.addEventListener('click', () => {
     const newBook = new Book(title.value, author.value, numOfPages.value, read);
+    myLibrary[num] = newBook.title;
+    displayBooks(num);
+    num++; 
+  })
 
-    console.log(`${newBook.title}, ${newBook.author}, ${newBook.numOfPages}, ${newBook.read}`);
+  clearAllText.forEach(eachText => {
+    eachText.addEventListener('click', () => {
+      title.value = '';
+      author.value = '';
+      numOfPages.value = '';
+      read = '';
+    })
   })
 }
 
-function displayBooks() {
+function displayBooks(num) {
   const display = document.getElementById('display-books');
 
-  for (let i = 0; i < myLibrary.length; i++) {
-    const eachBook = document.createElement('div');
-    eachBook.classList.add('each-book');
-    eachBook.textContent = myLibrary[i];
-    display.appendChild(eachBook);
-  }
+  const eachBook = document.createElement('div');
+  eachBook.classList.add('each-book');
+  eachBook.textContent = myLibrary[num];
+  display.appendChild(eachBook);
 }
 
 function openModal() {
@@ -53,15 +63,16 @@ function openModal() {
 }
 
 function closeModal() {
-  const closeModalButton = document.getElementById('close-modal');
+  const closeModalButton = document.querySelectorAll('.close-modal');
   const modal = document.querySelector('.modal');
 
-  closeModalButton.addEventListener('click', () => {
-    modal.close();
+  closeModalButton.forEach(modalClose => {
+    modalClose.addEventListener('click', () => {
+      modal.close();
+    })
   })
 }
 
 openModal();
 closeModal();
-displayBooks();
 addBookToLibrary();
