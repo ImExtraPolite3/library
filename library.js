@@ -1,5 +1,5 @@
 const myLibrary = [];
-let read = false;
+let read = '';
 
 function Book(title, author, numOfPages, read) {
   this.title = title;
@@ -12,36 +12,24 @@ function addBookToLibrary() {
   const title = document.getElementById('title');
   const author = document.getElementById('author');
   const numOfPages = document.getElementById('num-of-pages');
-  const yesRead = document.getElementById('read');
-  const noRead = document.getElementById('not-read');
+  const ifRead = document.querySelectorAll('.if-read');
   const confirm = document.getElementById('confirm');
 
-  yesRead.addEventListener('click', () => {
-    read = true;
+  ifRead.forEach(check => {
+    check.addEventListener('click', () => {
+      if (check.value == 'read') {
+        read = 'read';
+      } else {
+        read = 'did not read';
+      }
+    })
+  })
+
+  confirm.addEventListener('click', () => {
     const newBook = new Book(title.value, author.value, numOfPages.value, read);
 
-    confirm.addEventListener('click', () => {
-      whenConfirm(newBook.title, newBook.author, newBook.numOfPages, newBook.read);
-
-      title.value = '';
-      author.value = '';
-      numOfPages.value = '';
-      read = false;
-    })
-  });
-
-  noRead.addEventListener('click', () => {
-    read = false;
-    const newBook = new Book(title.value, author.value, numOfPages.value, read);
-
-    confirm.addEventListener('click', () => {
-      whenConfirm(newBook.title, newBook.author, newBook.numOfPages, newBook.read);
-    })
-  });
-}
-
-function whenConfirm(title, author, numOfPages, read) {
-  console.log(`${title}, ${author}, ${numOfPages}, ${read}`);
+    console.log(`${newBook.title}, ${newBook.author}, ${newBook.numOfPages}, ${newBook.read}`);
+  })
 }
 
 function displayBooks() {
