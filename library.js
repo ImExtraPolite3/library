@@ -29,8 +29,8 @@ function addBookToLibrary() {
 
   confirm.addEventListener('click', () => {
     const newBook = new Book(title.value, author.value, numOfPages.value, read);
-    myLibrary[num] = newBook.title;
-    displayBooks(num);
+    myLibrary[num] = newBook;
+    displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read);
     num++; 
   })
 
@@ -44,13 +44,28 @@ function addBookToLibrary() {
   })
 }
 
-function displayBooks(num) {
+function displayBooks(title, author, numOfPages, read) {
   const display = document.getElementById('display-books');
 
   const eachBook = document.createElement('div');
   eachBook.classList.add('each-book');
-  eachBook.textContent = myLibrary[num];
+  const eachBookTitle = document.createElement('h2');
+  eachBookTitle.classList.add('each-book-title');
+  eachBookTitle.textContent = title;
+  const eachBookAuthor = document.createElement('p');
+  eachBookAuthor.classList.add('each-book-author');
+  eachBookAuthor.textContent = author;
+  const eachBookNumOfPages = document.createElement('p');
+  eachBookNumOfPages.classList.add('each-book-num-of-pages');
+  eachBookNumOfPages.textContent = numOfPages;
+  const eachBookIfRead = document.createElement('p');
+  eachBookIfRead.classList.add('each-book-if-read');
+  eachBookIfRead.textContent = read;
   display.appendChild(eachBook);
+  eachBook.appendChild(eachBookTitle);
+  eachBook.appendChild(eachBookAuthor);
+  eachBook.appendChild(eachBookNumOfPages);
+  eachBook.appendChild(eachBookIfRead);
 }
 
 function openModal() {
