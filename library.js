@@ -79,9 +79,7 @@ function removeBook(num) {
 
   deleteBook.forEach(eachDelete => {
     eachDelete.addEventListener('click', () => {
-      allBooks.forEach(eachBook => {
-        display.removeChild(eachBook);
-      })
+      console.log(myLibrary[num]);
     })
   })
 }
