@@ -12,8 +12,23 @@ body {
   margin-bottom: 20px;
 }
 
-#close-modal {
+#close-modal,
+.delete-book {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#display-books {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  gap: 30px;
+  justify-content: center;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.each-book {
+  border: solid;
+  position: relative;
 }
