@@ -32,6 +32,7 @@ function addBookToLibrary() {
     myLibrary[num] = newBook;
     displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read);
     num++; 
+    removeBook();
   })
 
   clearAllText.forEach(eachText => {
@@ -46,7 +47,9 @@ function addBookToLibrary() {
 
 function displayBooks(title, author, numOfPages, read) {
   const display = document.getElementById('display-books');
-
+  const deleteBook = document.createElement('button');
+  deleteBook.classList.add('delete-book');
+  deleteBook.textContent = 'X';
   const eachBook = document.createElement('div');
   eachBook.classList.add('each-book');
   const eachBookTitle = document.createElement('h2');
@@ -62,10 +65,23 @@ function displayBooks(title, author, numOfPages, read) {
   eachBookIfRead.classList.add('each-book-if-read');
   eachBookIfRead.textContent = read;
   display.appendChild(eachBook);
+  eachBook.appendChild(deleteBook);
   eachBook.appendChild(eachBookTitle);
   eachBook.appendChild(eachBookAuthor);
   eachBook.appendChild(eachBookNumOfPages);
   eachBook.appendChild(eachBookIfRead);
+}
+
+function removeBook() {
+  const allBooks = document.querySelectorAll('.each-book');
+  const deleteBook = document.querySelector('.delete-book');
+  const display = document.getElementById('display-books');
+
+  deleteBook.addEventListener('click', () => {
+    allBooks.forEach(eachBook => {
+      display.removeChild(eachBook);
+    })
+  })
 }
 
 function openModal() {
