@@ -32,3 +32,7 @@ body {
   border: solid;
   position: relative;
 }
+
+.something {
+  display: none;
+}

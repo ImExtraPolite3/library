@@ -31,7 +31,6 @@ function addBookToLibrary() {
     const newBook = new Book(title.value, author.value, numOfPages.value, read);
     myLibrary[num] = newBook;
     displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read);
-    removeBook(num);
     num++; 
   })
 
@@ -41,6 +40,7 @@ function addBookToLibrary() {
       author.value = '';
       numOfPages.value = '';
       read = '';
+      removeBook();
     })
   })
 }
@@ -76,10 +76,26 @@ function removeBook(num) {
   const allBooks = document.querySelectorAll('.each-book');
   const deleteBook = document.querySelectorAll('.delete-book');
   const display = document.getElementById('display-books');
+  const title = document.querySelectorAll('.each-book-title');
+
+
+  // allBooks.forEach(eachBook => {
+  //   deleteBook.forEach(eachDelete => {
+  //     eachDelete.addEventListener('click', () => {
+  //       display.removeChild(eachBook);
+  //     })
+  //   })
+  // })
+
+  
 
   deleteBook.forEach(eachDelete => {
     eachDelete.addEventListener('click', () => {
-      console.log(myLibrary[num]);
+      for (let i = 0; i < deleteBook.length; i++) {
+        if (myLibrary[i].title === title[i].textContent) {
+          title[i].textContent = "good";
+        }
+      }
     })
   })
 }
