@@ -35,6 +35,7 @@ function addBookToLibrary() {
       alert('provide all information pertaining to the book');
     } else {
       displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read, num);
+      changeRead(num);
     }
     removeBook(num);
     num++; 
@@ -67,7 +68,7 @@ function displayBooks(title, author, numOfPages, read, num) {
   eachBookNumOfPages.classList.add('each-book-num-of-pages');
   eachBookNumOfPages.textContent = numOfPages;
   const eachBookIfRead = document.createElement('p');
-  eachBookIfRead.classList.add('each-book-if-read');
+  eachBookIfRead.className = 'each-book-if-read each-book-if-read' + num;
   eachBookIfRead.textContent = read;
   display.appendChild(eachBook);
   eachBook.appendChild(deleteBook);
@@ -85,6 +86,16 @@ function removeBook(num) {
   deleteBook.addEventListener('click', () => {
     display.removeChild(allBooks);
   })
+}
+
+function changeRead(num) {
+  const ifRead = document.querySelector('.each-book-if-read' + num);
+
+  if (ifRead.textContent = 'read') {
+    ifRead.classList.add('green');
+  } else if (ifRead.textContent = 'did not read'){
+    ifRead.classList.add('red');
+  }
 }
 
 function openModal() {

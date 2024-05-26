@@ -33,6 +33,6 @@ body {
   position: relative;
 }
 
-.something {
-  display: none;
+.green:hover {
+  background-color: green;
 }
