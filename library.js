@@ -30,7 +30,12 @@ function addBookToLibrary() {
   confirm.addEventListener('click', () => {
     const newBook = new Book(title.value, author.value, numOfPages.value, read);
     myLibrary[num] = newBook;
-    displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read, num);
+
+    if(newBook.title == '' || newBook.value == '' || newBook.numOfPages == '' || newBook.read == '') {
+      alert('provide all information pertaining to the book');
+    } else {
+      displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read, num);
+    }
     removeBook(num);
     num++; 
   })
@@ -76,9 +81,6 @@ function removeBook(num) {
   const allBooks = document.querySelector('.each-book' + num);
   const deleteBook = document.querySelector('.delete-book' + num);
   const display = document.getElementById('display-books');
-  const title = document.querySelectorAll('.each-book-title');
-
-
 
   deleteBook.addEventListener('click', () => {
     display.removeChild(allBooks);
