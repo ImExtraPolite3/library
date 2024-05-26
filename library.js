@@ -30,7 +30,8 @@ function addBookToLibrary() {
   confirm.addEventListener('click', () => {
     const newBook = new Book(title.value, author.value, numOfPages.value, read);
     myLibrary[num] = newBook;
-    displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read);
+    displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read, num);
+    removeBook(num);
     num++; 
   })
 
@@ -40,18 +41,17 @@ function addBookToLibrary() {
       author.value = '';
       numOfPages.value = '';
       read = '';
-      removeBook();
     })
   })
 }
 
-function displayBooks(title, author, numOfPages, read) {
+function displayBooks(title, author, numOfPages, read, num) {
   const display = document.getElementById('display-books');
   const deleteBook = document.createElement('button');
-  deleteBook.classList.add('delete-book');
+  deleteBook.className = 'delete-book delete-book' + num;
   deleteBook.textContent = 'X';
   const eachBook = document.createElement('div');
-  eachBook.classList.add('each-book');
+  eachBook.className = 'each-book each-book' + num;
   const eachBookTitle = document.createElement('h2');
   eachBookTitle.classList.add('each-book-title');
   eachBookTitle.textContent = title;
@@ -73,30 +73,15 @@ function displayBooks(title, author, numOfPages, read) {
 }
 
 function removeBook(num) {
-  const allBooks = document.querySelectorAll('.each-book');
-  const deleteBook = document.querySelectorAll('.delete-book');
+  const allBooks = document.querySelector('.each-book' + num);
+  const deleteBook = document.querySelector('.delete-book' + num);
   const display = document.getElementById('display-books');
   const title = document.querySelectorAll('.each-book-title');
 
 
-  // allBooks.forEach(eachBook => {
-  //   deleteBook.forEach(eachDelete => {
-  //     eachDelete.addEventListener('click', () => {
-  //       display.removeChild(eachBook);
-  //     })
-  //   })
-  // })
 
-  
-
-  deleteBook.forEach(eachDelete => {
-    eachDelete.addEventListener('click', () => {
-      for (let i = 0; i < deleteBook.length; i++) {
-        if (myLibrary[i].title === title[i].textContent) {
-          title[i].textContent = "good";
-        }
-      }
-    })
+  deleteBook.addEventListener('click', () => {
+    display.removeChild(allBooks);
   })
 }
 
