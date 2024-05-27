@@ -33,6 +33,21 @@ body {
   position: relative;
 }
 
+.each-book-if-read {
+  padding: 10px 0;
+  margin: 0;
+}
+
+.red:hover, 
+.green:hover {
+  color: white;
+}
+
 .green:hover {
   background-color: green;
+}
+
+.red:hover {
+  background-color: red;
+  
 }
