@@ -35,8 +35,8 @@ function addBookToLibrary() {
       alert('provide all information pertaining to the book');
     } else {
       displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read, num);
-      changeRead(num);
     }
+    changeRead(num);
     removeBook(num);
     num++; 
   })
@@ -91,11 +91,21 @@ function removeBook(num) {
 function changeRead(num) {
   const ifRead = document.querySelector('.each-book-if-read' + num);
 
-  if (ifRead.textContent = 'read') {
+  if (ifRead.textContent == 'read') {
     ifRead.classList.add('green');
-  } else if (ifRead.textContent = 'did not read'){
+  } else if (ifRead.textContent == 'did not read'){
     ifRead.classList.add('red');
   }
+
+  ifRead.addEventListener('click', () => {
+    if (ifRead.textContent == 'read') {
+      ifRead.textContent = 'did not read';
+      ifRead.className = 'each-book-if-read each-book-if-read0 red';
+    } else if (ifRead.textContent == 'did not read'){
+      ifRead.textContent = 'read';
+      ifRead.className = 'each-book-if-read each-book-if-read0 green';
+    }
+  })
 }
 
 function openModal() {
