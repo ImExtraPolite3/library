@@ -7,6 +7,17 @@ body {
   font-family: 'roboto';
 }
 
+.modal {
+  padding: 20px 50px;
+  display: grid; 
+  grid-template-rows: 17px 40px 17px 40px 17px 40px 30px 50px;
+}
+
+.check-read {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .modal > input {
   display: block;
   margin-bottom: 20px;
@@ -17,7 +28,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  border: none;
+  background-color: white;
+  padding: 5px;
 }
+
+#close-modal:hover,
+.delete-book:hover {
+  background-color: black;
+  color: white;
+}
+
 
 #display-books {
   display: grid;
@@ -49,5 +70,4 @@ body {
 
 .red:hover {
   background-color: red;
-  
 }
