@@ -7,8 +7,13 @@ body {
   font-family: 'roboto';
 }
 
-.modal {
-  padding: 20px 50px;
+.add-container {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-style {
+  padding: 10px 40px;
   display: grid; 
   grid-template-rows: 17px 40px 17px 40px 17px 40px 30px 50px;
 }
@@ -18,7 +23,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.modal > input {
+.modal-style > input {
   display: block;
   margin-bottom: 20px;
 }
@@ -39,7 +44,6 @@ body {
   color: white;
 }
 
-
 #display-books {
   display: grid;
   grid-template-columns: repeat(3, 300px);
@@ -59,15 +63,15 @@ body {
   margin: 0;
 }
 
-.red:hover, 
-.green:hover {
+.red, 
+.green {
   color: white;
 }
 
-.green:hover {
+.green {
   background-color: green;
 }
 
-.red:hover {
+.red {
   background-color: red;
 }
