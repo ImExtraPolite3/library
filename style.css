@@ -3,32 +3,85 @@
   src: url(fonts/Roboto-Thin.ttf);
 }
 
-body {
+* {
+  margin: 0;
+  padding: 0;
   font-family: 'roboto';
 }
 
-.add-container {
-  display: flex;
-  justify-content: center;
+header > h1 {
+  padding: 20px 0;
 }
 
-.modal-style {
-  padding: 10px 40px;
-  display: grid; 
-  grid-template-rows: 17px 40px 17px 40px 17px 40px 30px 50px;
+header,
+header > button,
+.check-read > button:hover  {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+header > button {
+  width: 100%;
+  border: none;
+  padding: 10px 0;
+}
+
+header > button:hover {
+  background-color: lightgray;
+  color: black;
+}
+
+.modal {
+  margin: auto;
+  width: 60%;
+}
+
+.all-buttons {
+  border: none;
+  padding: 10px 0;
 }
 
 .check-read {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
 }
 
-.modal-style > input {
+.modal-style > div:first-child {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.modal-style > div:first-child > input {
   display: block;
-  margin-bottom: 20px;
+  border: none;
+  background-color: #f0f0f0;
+  padding: 8px 0;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-#close-modal,
+#confirm,
+#close-modal {
+  width: 100%;
+}
+
+#confirm {
+  margin-bottom: 2px;
+}
+
+#confirm:hover {
+  background-color: green;
+  color: white;
+}
+
+#close-modal:hover {
+  background-color: red;
+  color: white;
+}
+
 .delete-book {
   position: absolute;
   top: 0;
@@ -38,7 +91,6 @@ body {
   padding: 5px;
 }
 
-#close-modal:hover,
 .delete-book:hover {
   background-color: black;
   color: white;

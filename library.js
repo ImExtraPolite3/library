@@ -8,8 +8,20 @@ function Book(title, author, numOfPages, read) {
   this.read = read;
 }
 
-function addBookToLibrary() {
+function getTitle() {
   const title = document.getElementById('title');
+  const test = document.querySelector('.add-book');
+
+  title.addEventListener('input', (event) => {
+    if (!title.validity.value) {
+      
+    } else {
+      test.textContent = 'enter name';
+    }
+  })
+}
+
+function addBookToLibrary() {
   const author = document.getElementById('author');
   const numOfPages = document.getElementById('num-of-pages');
   const ifRead = document.querySelectorAll('.if-read');
@@ -28,11 +40,11 @@ function addBookToLibrary() {
   })
 
   confirm.addEventListener('click', () => {
-    const newBook = new Book(title.value, author.value, numOfPages.value, read);
+    const newBook = new Book(getTitle(), author.value, numOfPages.value, read);
     myLibrary[num] = newBook;
 
     if(newBook.title == '' || newBook.value == '' || newBook.numOfPages == '' || newBook.read == '') {
-      alert('provide all information pertaining to the book');
+      console.log(getTitle());
     } else {
       displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read, num);
     }

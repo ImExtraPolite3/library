@@ -7,31 +7,35 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="add-container">
-      <button class="add-book open-modal">NEW-BOOK</button>
-    </div>
-
+  <header>
+    <h1>Library</h1>
+    <button class="add-book open-modal">NEW-BOOK</button>
+  </header>
+  <section class="container">
     <div id="display-books">
     </div>
-
+  </section>
+  <section>
     <dialog class="modal">
       <div class="modal-style">
-        <button class="close-modal" id="close-modal">X</button>
-        <label for="title">TITLE</label>
-        <input type="text" id="title" name="title">
-        <label for="author">AUTHOR</label>
-        <input type="text" id="author" name="author">
-        <label for="num-of-pages">NUMBER OF PAGES</label>
-        <input type="number" id="num-of-pages" name="num-of-pages">
-        <div class="check-read">
-          <input type="button" value="read" id="read" class="if-read">
-          <input type="button" value="did not read" id="not-read" class="if-read">
+        <div>
+          <label for="title">TITLE</label>
+          <input type="text" id="title" name="title">
+          <!-- <p>please enter a book name</p> -->
+          <label for="author">AUTHOR</label>
+          <input type="text" id="author" name="author">
+          <label for="num-of-pages">NUMBER OF PAGES</label>
+          <input type="number" id="num-of-pages" name="num-of-pages">
         </div>
-        <input type="button" value="confirm" id="confirm" class="close-modal">
+        <div class="check-read">
+          <button id="read" class="if-read all-buttons">read</button>
+          <button id="not-read" class="if-read all-buttons">did not read</button>
+        </div>
+        <button id="confirm" class="close-modal all-buttons">confirm</button>
+        <button class="close-modal all-buttons" id="close-modal">cancel</button>
       </div>
     </dialog>
-  </div>
+  </section>
   <script src="library.js"></script>
 </body>
 </html>
