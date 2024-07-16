@@ -52,8 +52,10 @@ function if_read() {
 
   ifRead.forEach(check => {
     check.addEventListener('click', () => {
-      check.style.backgroundColor = 'black';
-      check.style.color = 'white';
+      check.classList.remove('check-read-choice');
+      if (check.value) { // Come back to this later.
+        check.classList.add('check-read-choice');
+      }
       read = check.value;
     })
   })
@@ -75,14 +77,25 @@ function checkAllFields (event) {
       event.preventDefault();
     } else {
       addBookToLibrary();
-      allFieldsGood();
+      clear();
     }
   })
 }
 
-function allFieldsGood () {
+function clear () {
   const modal = document.querySelector('.modal');
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const pages = document.getElementById('num-of-pages');
+  const ifRead = document.querySelectorAll('.if-read');
 
+
+  title.value = '';
+  author.value = '';
+  pages.value = '';
+  ifRead.forEach(each => {
+    each.classList.remove('check-read-choice');
+  })
   modal.close();
 }
 
@@ -90,7 +103,7 @@ function displayBooks(title, author, numOfPages, read, num) {
   const display = document.getElementById('display-books');
   const deleteBook = document.createElement('button');
   deleteBook.className = 'delete-book delete-book' + num;
-  deleteBook.textContent = 'cancel';
+  deleteBook.textContent = 'delete';
   const eachBook = document.createElement('div');
   eachBook.className = 'each-book each-book' + num;
   const eachBookTitle = document.createElement('h2');
@@ -158,6 +171,7 @@ function closeModal() {
 
   closeModalButton.addEventListener('click', () => {
     modal.close();
+    clear();
   })
 }
 

@@ -49,6 +49,11 @@ header > button:hover {
   margin-bottom: 2px;
 }
 
+.check-read-choice {
+  background-color: black;
+  color: white;
+}
+
 .modal-style > div:first-child {
   width: 80%;
   margin: 20px auto;
