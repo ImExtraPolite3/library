@@ -135,4 +135,8 @@ header > button:hover {
     justify-content: center;
     padding-top: 20px;
   }
+
+  .modal {
+    max-width: 40%;
+  }
 }
