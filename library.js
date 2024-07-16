@@ -52,32 +52,29 @@ function if_read() {
 
   ifRead.forEach(check => {
     check.addEventListener('click', () => {
-      check.classList.remove('check-read-choice');
-      if (check.value) { // Come back to this later.
-        check.classList.add('check-read-choice');
-      }
       read = check.value;
     })
   })
 }
 
-function addBookToLibrary() {
-  let num = 0;
+function addBookToLibrary(num) {
   const newBook = new Book(getTitle(), getAuthor(), getPage(), read);
   displayBooks(newBook.title, newBook.author, newBook.numOfPages, newBook.read, num);
   removeBook(num);
-  num++;
 }
 
 function checkAllFields (event) {
   const confirm = document.getElementById('confirm');
+  let num = 0;
 
   confirm.addEventListener('click', () => {
     if (getTitle() === 'empty' || getAuthor() === 'empty' || getPage() === 'empty') {
       event.preventDefault();
     } else {
-      addBookToLibrary();
+      addBookToLibrary(num);
+      changeRead(num);
       clear();
+      num++;
     }
   })
 }
@@ -88,7 +85,6 @@ function clear () {
   const author = document.getElementById('author');
   const pages = document.getElementById('num-of-pages');
   const ifRead = document.querySelectorAll('.if-read');
-
 
   title.value = '';
   author.value = '';
@@ -111,11 +107,11 @@ function displayBooks(title, author, numOfPages, read, num) {
   eachBookTitle.textContent = title;
   const eachBookAuthor = document.createElement('p');
   eachBookAuthor.classList.add('each-book-author');
-  eachBookAuthor.textContent = author;
+  eachBookAuthor.textContent = 'By: ' + author;
   const eachBookNumOfPages = document.createElement('p');
   eachBookNumOfPages.classList.add('each-book-num-of-pages');
-  eachBookNumOfPages.textContent = numOfPages;
-  const eachBookIfRead = document.createElement('p');
+  eachBookNumOfPages.textContent = numOfPages + ' pages';
+  const eachBookIfRead = document.createElement('button');
   eachBookIfRead.className = 'each-book-if-read each-book-if-read' + num;
   eachBookIfRead.textContent = read;
   display.appendChild(eachBook);
@@ -149,7 +145,7 @@ function changeRead(num) {
     if (ifRead.textContent == 'read') {
       ifRead.textContent = 'did not read';
       ifRead.className = 'each-book-if-read each-book-if-read0 red';
-    } else if (ifRead.textContent == 'did not read'){
+    } else if (ifRead.textContent == 'did not read') {
       ifRead.textContent = 'read';
       ifRead.className = 'each-book-if-read each-book-if-read0 green';
     }

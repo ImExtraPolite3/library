@@ -10,6 +10,7 @@
 }
 
 header > h1 {
+  font-size: 3rem;
   padding: 20px 0;
 }
 
@@ -21,7 +22,9 @@ header > button,
   text-align: center;
 }
 
-header > button {
+header > button,
+.each-book > button {
+  font-size: 1.1rem;
   width: 100%;
   border: none;
   padding: 10px 0;
@@ -82,7 +85,8 @@ header > button:hover {
   display: none;
 }
 
-#confirm {
+#confirm,
+.each-book-if-read {
   margin-bottom: 2px;
 }
 
@@ -91,7 +95,8 @@ header > button:hover {
   color: white;
 }
 
-#close-modal:hover {
+#close-modal:hover,
+.delete-book:hover {
   background-color: red;
   color: white;
 }
@@ -102,31 +107,32 @@ header > button:hover {
   border: solid;
 }
 
-.each-book-if-read {
-  padding: 10px 0;
-  margin: 0;
+.each-book > h2 {
+  background-color: black;
+  color: white;
+  padding: 10px;
 }
 
-.red, 
-.green {
+.each-book > p {
+  padding: 5px 10px;
+}
+
+.green:hover {
+  background-color: green;
   color: white;
 }
 
-.green {
-  background-color: green;
-}
-
-.red {
+.red:hover {
   background-color: red;
+  color: white;
 }
 
 @media (min-width: 992px) {
   #display-books {
     display: grid;
-    grid-template-columns: repeat(3, 300px);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     justify-content: center;
     padding-top: 20px;
-    text-align: center;
   }
 }
