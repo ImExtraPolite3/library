@@ -58,14 +58,23 @@ header > button:hover {
   display: block;
   border: none;
   background-color: #f0f0f0;
-  padding: 8px 0;
+  padding: 8px 3px;
   width: 100%;
+}
+
+.modal-style > div:first-child > p {
   margin-bottom: 10px;
+  color: red;
+  font-size: 0.8rem;
 }
 
 #confirm,
 #close-modal {
   width: 100%;
+}
+
+.hide {
+  display: none;
 }
 
 #confirm {
@@ -82,32 +91,10 @@ header > button:hover {
   color: white;
 }
 
-.delete-book {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: none;
-  background-color: white;
-  padding: 5px;
-}
-
-.delete-book:hover {
-  background-color: black;
-  color: white;
-}
-
-#display-books {
-  display: grid;
-  grid-template-columns: repeat(3, 300px);
-  gap: 30px;
-  justify-content: center;
-  padding-top: 20px;
-  text-align: center;
-}
-
 .each-book {
+  margin: 20px auto;
+  width: 90%;
   border: solid;
-  position: relative;
 }
 
 .each-book-if-read {
@@ -126,4 +113,15 @@ header > button:hover {
 
 .red {
   background-color: red;
+}
+
+@media (min-width: 992px) {
+  #display-books {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 30px;
+    justify-content: center;
+    padding-top: 20px;
+    text-align: center;
+  }
 }

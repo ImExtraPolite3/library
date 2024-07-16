@@ -21,17 +21,19 @@
         <div>
           <label for="title">TITLE</label>
           <input type="text" id="title" name="title">
-          <!-- <p>please enter a book name</p> -->
+          <p class="no-name hide">please enter a book name</p>
           <label for="author">AUTHOR</label>
           <input type="text" id="author" name="author">
+          <p class="no-author hide">please enter authors name</p>
           <label for="num-of-pages">NUMBER OF PAGES</label>
           <input type="number" id="num-of-pages" name="num-of-pages">
+          <p class="no-number hide">please enter number of pages</p>
         </div>
         <div class="check-read">
-          <button id="read" class="if-read all-buttons">read</button>
-          <button id="not-read" class="if-read all-buttons">did not read</button>
+          <button id="read" class="if-read all-buttons" value="read">read</button>
+          <button id="not-read" class="if-read all-buttons" value="did-not-read">did not read</button>
         </div>
-        <button id="confirm" class="close-modal all-buttons">confirm</button>
+        <button id="confirm" class="all-buttons">confirm</button>
         <button class="close-modal all-buttons" id="close-modal">cancel</button>
       </div>
     </dialog>

@@ -10,64 +10,87 @@ function Book(title, author, numOfPages, read) {
 
 function getTitle() {
   const title = document.getElementById('title');
-  const test = document.querySelector('.add-book');
+  const no_name = document.querySelector('.no-name');
 
-  title.addEventListener('input', (event) => {
-    if (!title.validity.value) {
-      
-    } else {
-      test.textContent = 'enter name';
-    }
+  if (title.value === '') {
+    no_name.classList.remove('hide');
+    return 'empty';
+  } else {
+    no_name.classList.add('hide');
+    return title.value;
+  }
+}
+
+function getAuthor() {
+  const author = document.getElementById('author');
+  const no_author = document.querySelector('.no-author');
+
+  if (author.value === '') {
+    no_author.classList.remove('hide');
+    return 'empty';
+  } else {
+    no_author.classList.add('hide');
+    return author.value;
+  }
+}
+
+function getPage() {
+  const pages = document.getElementById('num-of-pages');
+  const no_pages = document.querySelector('.no-number');
+
+  if (pages.value === '') {
+    no_pages.classList.remove('hide');
+    return 'empty';
+  } else {
+    no_pages.classList.add('hide');
+    return pages.value;
+  }
+}
+
+function if_read() {
+  const ifRead = document.querySelectorAll('.if-read');
+
+  ifRead.forEach(check => {
+    check.addEventListener('click', () => {
+      check.style.backgroundColor = 'black';
+      check.style.color = 'white';
+      read = check.value;
+    })
   })
 }
 
 function addBookToLibrary() {
-  const author = document.getElementById('author');
-  const numOfPages = document.getElementById('num-of-pages');
-  const ifRead = document.querySelectorAll('.if-read');
-  const confirm = document.getElementById('confirm');
-  const clearAllText = document.querySelectorAll('.close-modal');
   let num = 0;
+  const newBook = new Book(getTitle(), getAuthor(), getPage(), read);
+  displayBooks(newBook.title, newBook.author, newBook.numOfPages, newBook.read, num);
+  removeBook(num);
+  num++;
+}
 
-  ifRead.forEach(check => {
-    check.addEventListener('click', () => {
-      if (check.value == 'read') {
-        read = 'read';
-      } else {
-        read = 'did not read';
-      }
-    })
-  })
+function checkAllFields (event) {
+  const confirm = document.getElementById('confirm');
 
   confirm.addEventListener('click', () => {
-    const newBook = new Book(getTitle(), author.value, numOfPages.value, read);
-    myLibrary[num] = newBook;
-
-    if(newBook.title == '' || newBook.value == '' || newBook.numOfPages == '' || newBook.read == '') {
-      console.log(getTitle());
+    if (getTitle() === 'empty' || getAuthor() === 'empty' || getPage() === 'empty') {
+      event.preventDefault();
     } else {
-      displayBooks(myLibrary[num].title, myLibrary[num].author, myLibrary[num].numOfPages, myLibrary[num].read, num);
+      addBookToLibrary();
+      allFieldsGood();
     }
-    changeRead(num);
-    removeBook(num);
-    num++; 
   })
+}
 
-  clearAllText.forEach(eachText => {
-    eachText.addEventListener('click', () => {
-      title.value = '';
-      author.value = '';
-      numOfPages.value = '';
-      read = '';
-    })
-  })
+function allFieldsGood () {
+  const modal = document.querySelector('.modal');
+
+  modal.close();
 }
 
 function displayBooks(title, author, numOfPages, read, num) {
   const display = document.getElementById('display-books');
   const deleteBook = document.createElement('button');
   deleteBook.className = 'delete-book delete-book' + num;
-  deleteBook.textContent = 'X';
+  deleteBook.textContent = 'cancel';
   const eachBook = document.createElement('div');
   eachBook.className = 'each-book each-book' + num;
   const eachBookTitle = document.createElement('h2');
@@ -83,11 +106,11 @@ function displayBooks(title, author, numOfPages, read, num) {
   eachBookIfRead.className = 'each-book-if-read each-book-if-read' + num;
   eachBookIfRead.textContent = read;
   display.appendChild(eachBook);
-  eachBook.appendChild(deleteBook);
   eachBook.appendChild(eachBookTitle);
   eachBook.appendChild(eachBookAuthor);
   eachBook.appendChild(eachBookNumOfPages);
   eachBook.appendChild(eachBookIfRead);
+  eachBook.appendChild(deleteBook);
 }
 
 function removeBook(num) {
@@ -130,16 +153,15 @@ function openModal() {
 }
 
 function closeModal() {
-  const closeModalButton = document.querySelectorAll('.close-modal');
+  const closeModalButton = document.querySelector('.close-modal');
   const modal = document.querySelector('.modal');
 
-  closeModalButton.forEach(modalClose => {
-    modalClose.addEventListener('click', () => {
-      modal.close();
-    })
+  closeModalButton.addEventListener('click', () => {
+    modal.close();
   })
 }
 
 openModal();
 closeModal();
-addBookToLibrary();
+if_read();
+checkAllFields();
